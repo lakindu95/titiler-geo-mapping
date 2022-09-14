@@ -134,3 +134,14 @@ See [contributors](https://github.com/developmentseed/titiler/graphs/contributor
 ## Changes
 
 See [CHANGES.md](https://github.com/developmentseed/titiler/blob/master/CHANGES.md).
+
+
+## Architecture
+
+<img width="500" src="./docs/images/titiler-drawio.jpg"/>
+
+## Proposed Architecture
+
+<img width="500" src="./docs/images/titiler-original.drawio.png"/>
+
+
