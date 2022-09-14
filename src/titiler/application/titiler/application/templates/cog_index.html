@@ -174,14 +174,20 @@
             font-size: 10px;
         }
       }
+      .align-right {
+        float:right;
+      }
     </style>
   </head>
   <body>
+
     <div id='selector' class='fixed top right bottom left scroll-auto bg-darken25 z3'>
       <div class='bg-white middle-center w600 px12 py12 round'>
-        <div class='txt-h5 mt6 mb6 color-black'>Enter COG url</div>
+        <div class='txt-h5 mt6 mb6 color-black'>Enter COG URL</div>
         <input id="cogeo" class='input wmax-full inline-block' value="" placeholder='cogeo url here' />
         <button id="launch" class='btn bts--xs btn--stroke bg-darken25-on-hover inline-block mt12 '>Apply</button>
+        <p class="align-right">Space4Good.com</p>
+
       </div>
     </div>
 
@@ -197,6 +203,8 @@
 
       <div id='menu-content' class='relative'>
         <!-- RGB Selection -->
+        <h1 class="align-center">Space4Good</h1>
+        <hr>
         <section id='3b-section' class='px6 py6 active'>
           <div class='txt-h5 mb6 color-black'><svg class='icon icon--l inline-block'><use xlink:href='#icon-layers'/></svg> RGB</div>
           <div id='rgb-buttons' class='align-center px6 py6'>
@@ -265,7 +273,13 @@
           <div id="histogram" class="w-full h120 h240-ml relative loading none"></div>
           <table id="histogram-table" class="none"></table>
         </div>
-
+        <hr>
+        <div class='px6 py6 w-full'>
+          <div class='w-full align-center'>
+            <button id='btn-refresh' class='btn bts--xs btn--stroke bg-darken25-on-hover inline-block txt-s color-black mx12 my12'>Go back</button>
+          </div>
+        </div>
+     
       </div>
       <button id='btn-hide'><svg id='hide-arrow' class='icon'><use xlink:href='#icon-arrow-right'/></svg></button>
     </div>
@@ -622,13 +636,18 @@ document.getElementById('btn-stats').addEventListener('click', () => {
       document.getElementById('histogram').classList.remove('loading')
     })
     .catch(err => {
-      console.warn(err)
+      console.warn(err);
+      refreshPageOnError(err);
     })
   })
 
 document.getElementById('btn-hide').addEventListener('click', () => {
   document.getElementById('hide-arrow').classList.toggle('off')
   document.getElementById('menu').classList.toggle('off')
+})
+
+document.getElementById('btn-refresh').addEventListener('click', () => {
+  refreshPage();
 })
 
 document.getElementById('layer-selector').addEventListener('change', () => {
@@ -715,6 +734,14 @@ const parseParams = (w_loc) => {
     out_params[tPar[0]] = tPar[1]
   }
   return out_params
+}
+
+const refreshPageOnError = (err) => {
+  if(!alert('Error message: ' + err)){window.location.reload();}
+}
+
+const refreshPage = () => {
+  window.location.reload();
 }
 
 const addCogeo = () => {
@@ -812,9 +839,11 @@ const addCogeo = () => {
       updateViz()
     })
     .catch(err => {
-      console.warn(err)
+      console.warn(err);
+      refreshPageOnError(err);
     })
 }
+
 
 document.getElementById('launch').addEventListener('click', () => {
   scope.url = document.getElementById('cogeo').value

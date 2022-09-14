@@ -37,14 +37,14 @@ The example handles tasks such as generating a docker image and setting up an ap
     ```bash
     export TITILER_STACK_NAME="mytiler"
     export TITILER_STACK_STAGE="dev"
-    export TITILER_STACK_MIN_ECS_INSTANCES=10
+    export TITILER_STACK_MIN_ECS_INSTANCES=1
     ```
 
     Available settings for ECS:
 
     ```python
-    min_ecs_instances: int = 5
-    max_ecs_instances: int = 50
+    min_ecs_instances: int = 1
+    max_ecs_instances: int = 2
 
     # CPU value      |   Memory value
     # 256 (.25 vCPU) | 0.5 GB, 1 GB, 2 GB

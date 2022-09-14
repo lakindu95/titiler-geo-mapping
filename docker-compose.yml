@@ -4,6 +4,7 @@ services:
   titiler:
     # See https://github.com/developmentseed/titiler/discussions/387
     platform: linux/amd64
+    image: 534288293305.dkr.ecr.us-east-1.amazonaws.com/test-geo-mapping
     build:
       context: .
       dockerfile: dockerfiles/Dockerfile.gunicorn

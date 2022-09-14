@@ -123,7 +123,7 @@ class titilerECSStack(core.Stack):
             listener_port=80,
             task_image_options=ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
                 image=ecs.ContainerImage.from_registry(
-                    f"public.ecr.aws/developmentseed/titiler:{settings.image_version}",
+                    f"534288293305.dkr.ecr.us-east-1.amazonaws.com/test-geo-mapping:{settings.image_version}",
                 ),
                 container_port=80,
                 environment=task_env,
